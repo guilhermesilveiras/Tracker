@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="An original, local-only academic progress sandbox with fictitious curriculum data.">
+  <title>Tracker — Academic Progress</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a href="#overview" class="brand" aria-label="Tracker home"><span class="brand-mark">T</span><span>tracker<span class="brand-sub">ACADEMIC DEMO</span></span></a>
+      <p class="sidebar-title">WORKSPACE</p>
+      <nav aria-label="Main navigation">
+        <a href="#overview" data-nav="overview" class="nav-link active"><span aria-hidden="true">◫</span> Overview</a>
+        <a href="#curriculum" data-nav="curriculum" class="nav-link"><span aria-hidden="true">▦</span> Curriculum</a>
+        <a href="#electives" data-nav="electives" class="nav-link"><span aria-hidden="true">◇</span> Electives</a>
+        <a href="#activities" data-nav="activities" class="nav-link"><span aria-hidden="true">◷</span> Activities</a>
+        <a href="#backup" data-nav="backup" class="nav-link"><span aria-hidden="true">⇄</span> Backup</a>
+      </nav>
+      <div class="side-note"><span class="pulse"></span> LOCAL-ONLY DEMO
+        <p>No accounts, uploads, tracking, external APIs or real student records.</p>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar"><span class="breadcrumb">Projects / <strong>Tracker</strong></span><button class="theme-toggle" id="theme-button" type="button" aria-label="Toggle light and dark theme">Toggle theme <span aria-hidden="true">◐</span></button></header>
+      <main>
+        <section class="hero" id="overview">
+          <div class="eyebrow">INDEPENDENT SOFTWARE SANDBOX · SAMPLE DATA ONLY</div>
+          <h1>Your path, <span>at a glance.</span></h1>
+          <p>Track a fictional eight-term curriculum, select project paths, and model academic progress. Designed for offline software evaluation using no third-party personal data.</p>
+        </section>
+        <section aria-label="Progress summary" class="overview-layout">
+          <article class="card large-card">
+            <div class="card-top"><div><p class="eyebrow">OVERALL PROGRESS</p><h2>Degree overview</h2></div><span class="pill">Sample curriculum</span></div>
+            <div class="progress-overview">
+              <div id="progress-ring" class="ring" role="img" aria-label="Completion percentage"><div class="ring-inner"><strong id="pct">0%</strong><span>Complete</span></div></div>
+              <div class="ring-stat"><p class="eyebrow">ACCUMULATED HOURS</p><p class="big-number" id="total-done">0 <span>/ 0 h</span></p><p class="muted">Hours only count after a course is marked completed.</p></div>
+            </div>
+          </article>
+          <article class="card side-card"><p class="eyebrow">YOUR NEXT MILESTONE</p><h2>Keep moving forward</h2><p class="muted">Progress is stored locally in this browser. Export a JSON backup to move your anonymous sample progress elsewhere.</p><a class="primary-link" href="#curriculum">Explore curriculum <span aria-hidden="true">↗</span></a><div class="mini-callout">No identity or university records are requested.</div></article>
+        </section>
+        <section class="metric-grid" aria-label="Category progress">
+          <article class="metric"><div class="metric-icon">⌘</div><p>Core courses</p><strong id="core-value">0 / 0 h</strong><div class="track"><span id="core-track"></span></div></article>
+          <article class="metric"><div class="metric-icon amber">◈</div><p>Electives</p><strong id="elective-value">0 / 0 h</strong><div class="track"><span id="elective-track"></span></div></article>
+          <article class="metric"><div class="metric-icon green">◷</div><p>Activities</p><strong id="activities-value">0 / 0 h</strong><div class="track"><span id="activities-track"></span></div></article>
+        </section>
+        <section class="content-section" id="curriculum"><div class="section-heading"><div><p class="eyebrow">ACADEMIC ROADMAP</p><h2>Curriculum</h2><p class="muted">Every subject and credit value below is fictitious. Alternative projects are mutually exclusive.</p></div><span class="pill">8 sample terms</span></div><div class="term-grid" id="terms"></div></section>
+        <section class="content-section" id="electives"><div class="section-heading"><div><p class="eyebrow">EXPLORE FURTHER</p><h2>Electives</h2><p class="muted">Complete any three 45-hour subjects to reach the sample requirement. Additional hours do not raise the requirement.</p></div></div><div class="elective-grid" id="elective-cards"></div></section>
+        <section class="content-section" id="activities"><div class="section-heading"><div><p class="eyebrow">PRACTICE AND PARTICIPATION</p><h2>Supplementary activities</h2><p class="muted">Enter a hypothetical number of activity hours. No certificates, evidence or identifying records are collected.</p></div></div><div class="card activity-card"><label for="activity-hours">Sample activity hours</label><div class="activity-entry"><input type="number" id="activity-hours" min="0" max="10000" step="0.5" value="0"><span>hours</span><button class="button" id="save-activities" type="button">Apply hours</button></div><p class="muted">Up to 180 hours count toward the illustrative target.</p></div></section>
+        <section class="content-section" id="backup"><div class="section-heading"><div><p class="eyebrow">YOUR BROWSER, YOUR DATA</p><h2>Backup &amp; reset</h2><p class="muted">Export and restore only anonymous sample statuses and activity hours (JSON v1). No uploads or network transfers.</p></div></div><div class="backup-actions card"><button type="button" class="button" id="export">Export local JSON</button><label class="file-button" for="import-file">Import local JSON<input id="import-file" type="file" accept="application/json,.json"></label><button type="button" class="button danger" id="reset">Reset sample data</button><p class="muted small">Only four JSON fields are accepted: schema_version, courses, electives and activity_hours.</p></div></section>
+      </main>
+      <footer>Tracker · Independent academic-progress prototype · Synthetic data only · No third-party services</footer>
+    </div>
+  </div>
+  <div role="status" aria-live="polite" id="notification" class="toast" hidden></div>
+</body>
+</html>

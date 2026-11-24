@@ -1,0 +1,13 @@
+{
+  "name": "tracker",
+  "version": "1.0.0",
+  "description": "Local-only academic progress tracker with fully synthetic curriculum data",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "audit": "python3 scripts/audit.py"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
